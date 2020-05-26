@@ -7,12 +7,13 @@
  */
 public class Sorts
 {
-    enum ListType {Standard, Bubble, Insert};
+    enum ListType {Standard, Bubble, Insert, Select};
     ListType listType = ListType.Standard;
     
     private int[] list;
     private int[] blist; int bcompares = 0; int bswaps = 0;
     private int[] ilist; int icompares = 0; int iswaps = 0;
+    private int[] slist; int scompares = 0; int sswaps = 0;
 
     /**
      * Constructor for objects of class isort
@@ -28,6 +29,8 @@ public class Sorts
         this.BubbleSort();
         ilist = list.clone();
         this.InsertionSort();
+        slist = list.clone();
+        this.SelectionSort();
     }
     
     public String toString() {
@@ -45,7 +48,20 @@ public class Sorts
                   + " Swaps: " + this.bswaps);
                 list = this.blist;
                 break;
+            case Select:
+            	System.out.println("Selection Sort -- "
+                        + " Operations: " + (this.scompares + this.sswaps)
+                        + " Compares: " + this.scompares
+                        + " Swaps: " + this.sswaps);
+                      list = this.slist;
+                      break;
             case Insert:
+                System.out.println("Insertion Sort -- "
+                  + " Operations: " + (this.icompares + this.iswaps)
+                  + " Compares: " + this.icompares
+                  + " Swaps: " + this.iswaps);
+                list = this.ilist;
+                break;
             default:
                 System.out.println("Insertions Sort -- "
                   + " Operations: " + (this.icompares + this.iswaps)
@@ -112,7 +128,39 @@ public class Sorts
         
         return ilist;
     }
+    
+    private int[] SelectionSort() {
+    	Integer lowest = null;
+    	int temp;
+    	for(int i = 0;  i<slist.length; i++)
+    	{
+    		for(int j = i; j<slist.length; j++) {
+    			if(lowest == null || slist[lowest]>slist[j]) {
+    				lowest=j;
+    			}
+    			this.scompares++; //Technically two each time but my implementation is just bad just don't worry about it
+    		}
+    		temp = slist[i];
+    		slist[i]=slist[lowest];
+    		slist[lowest]=temp;
+    		lowest=null;
+    		this.sswaps++;
+    	}
+    	return slist;
+    }
 
+    /*
+     * Assessment on best sort:
+     * 
+     * Bubble is just bad, having both quadratic-time comparisons and swaps which wouldn't matter if we had one that was exponential or something but it's not like we're working with bogosorts here
+     * 
+     * Insertion is good but inconsistent. Both insertion and selection have quadratic comparisons, but insertion's worst case has quadratic swaps while selection has linear swaps almost no matter what. Iirc I read somewhere that insertion is better on average, and while either can come out on top for a given list, I'd take the consistency of selection in most situations
+     * 
+     * Both insertion and selection aren't the best you could do, though. Merge sort is really good and also fairly easy to implement. Cycle and heap sorts are also objectively better than both these sorts.
+     * 
+     */
+    
+    
     /**
      *
      */
@@ -128,6 +176,10 @@ public class Sorts
         
         // Insertion Sort
         is.listType = ListType.Insert;
+        System.out.println(is);
+        
+        //Selection Sort
+        is.listType = ListType.Select;
         System.out.println(is);
     }
 }
