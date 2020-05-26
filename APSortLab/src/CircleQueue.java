@@ -167,7 +167,6 @@ public class CircleQueue
    */
   public void insertionSort() {	
 	  
-	System.out.println("Insertion Sorting!");
 	
 	//two nodes needed for insertion sort indexes
     LinkedList node1 = headNode;
@@ -206,7 +205,6 @@ public class CircleQueue
     	node2 = node2.getNext();
     } 
     
-    System.out.println("Finished Insertion Sorting!");
     
   }
   
@@ -230,7 +228,6 @@ public class CircleQueue
 		  pointer=whichReplaced;
 	  }
 	  
-	  System.out.println("Finished Selection Sorting!");
   }
   
 }
