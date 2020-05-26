@@ -211,19 +211,15 @@ public class CircleQueue
   }
   
   public void selectionSort() {
-	  System.out.println("Selection Sorting!");
 	  LinkedList whichReplaced = headNode;
 	  LinkedList pointer = whichReplaced.getNext();
 	  LinkedList whichToChangeFinder = null;
 	  Object leastValueObj = null;
 	  while(whichReplaced != null && pointer != null) { 
-		  System.out.println("Entering first loop"); 
 		  leastValueObj=null;
 		  while(pointer != null) { 
-			  System.out.println("Entering second loop"); 
 			  if(leastValueObj == null || pointer.getObject().toString().compareTo(leastValueObj.toString())<0) {
 				  leastValueObj = pointer.getObject(); //should be done w/o updating this every time and using as swap value but I'm lazy and already wrote it this way
-				  System.out.println("pointer.getObject() is currently " + pointer.getObject().toString());
 				  whichToChangeFinder=pointer;
 			  }
 			  pointer = pointer.getNext();
