@@ -125,7 +125,7 @@ public class CircleQueueAL<E> { //it pains me that the original CircleQueue wasn
 	  /**
 	   * Performs insertion sort based off of the contents of object
 	   */
-	  public void insertionSort() {	
+	  /*public void insertionSort() {	
 		  
 		
 		//two nodes needed for insertion sort indexes
@@ -189,4 +189,5 @@ public class CircleQueueAL<E> { //it pains me that the original CircleQueue wasn
 		  }
 		  
 	  }
+	  */
 }
